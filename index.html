@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form validation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container" style="min-height:145vh; background-color:bisque;" >
+        <h1 class="text-center text-white bg-dark ">form validation</h1>
+        <form class="from" id="form" onsubmit="validate()">
+            <div class="form-group">
+                <label class="from-label"> FirstName:</label>
+                <input type=" text" placeholder="enter first name" onkeyup="firstname()" id="firstName"
+                    class="form-control" autocomplete="off">
+                <span id="errorFirstName"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="from-label"> LastName:</label>
+                <input type=" text" placeholder="enter last name" onkeyup="lastname()" id="lastName"
+                    class="form-control" autocomplete="off">
+                <span id="errorlastname"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="from-label"> EmailID:</label>
+                <input type=" email" placeholder="enter email ID" id="email" onkeyup="Emailid()" class="form-control"
+                    autocomplete="off">
+                <span id="erroremail"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="from-label"> Password</label>
+                <input type="password" placeholder="Enter password" onkeyup="passwords()" id="Password"
+                    class="form-control" autocomplete="off">
+                <span id="errorPassword"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="from-label">confirm Password</label>
+                <input type="password" placeholder="enter confirm password" onkeyup="confirmPasswords()"
+                    id="confirmPassword" class="form-control" autocomplete="off">
+                <span id="errorconfirmPassword"></span>
+
+            </div>
+            <div class="form-group">
+                <label for="country-select" class="form-label">Select your country:</label>
+                <select id="country-select" onclick="phonenumber()">
+                  <option value="">--Please select a country--</option>
+                  <option value="us">United States</option>
+                  <option value="vietnam">Vietnam</option>
+                  <option value="india">India</option>
+                  <option value="china">China</option>
+                  <option value="uae">UAE</option>
+                </select>
+            </div>
+                 <div class="form-group">
+                    <label for="phone-input" class="form-label">Enter your phone number:</label>
+                  <input type="text" id="code-input" name="code" readonly class="ccode">
+                  <input type="tel" id="phone-input" name="phone" minlength="10" maxlength="10" onkeypress='return event.charCode>= 48 && event.charCode <= 57' class="pho">
+                  <div id="errorp"></div>
+               
+                 </div>
+           
+
+            <!-- <div class="form-group">
+                <label class="from-label"> Phone Number </label>
+                <input type="number" placeholder="Enter Phone Number " id="PhoneNumber" class="form-control">
+
+            </div> -->
+            <!-- <div class="form-group">
+                <label class="from-label"> abhi dakha jayaga </label>
+                <input type=" text" placeholder="firstname" id="firstname" class="form-control">
+
+            </div> -->
+
+            <div class="form-group">
+            <label for="dob" class="from-label">Date of Birth:</label>
+           <input type="date" id="dob" name="dob"  min="1990-01-1" max="2005-12-31" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="genders">Gender:</label>
+                <div id="genders">
+                  <input type="radio" id="male" name="gender" value="male" onclick="Vgender()">
+                  <label for="male">Male</label>
+                
+                  <input type="radio" id="female" name="gender" value="female"  onclick="Vgender()">
+                  <label for="female">Female</label>
+                
+                  <input type="radio" id="others" name="gender" value="other"  onclick="Vgender()">
+                  <label for="other">Other</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="language">Language you know?</label>
+                <div id="Language">
+                  <input type="checkbox" id="c++" name="lan" value="c++"  onclick="language()" >
+                  <label for="C++">C++</label>
+                
+                  <input type="checkbox" id="Javascript" name="lan" value="Javascript" onclick="language()" >
+                  <label for="female">Javascript</label>
+                
+                  <input type="checkbox" id="python" name="lan" value="python" onclick="language()" >
+                  <label for="other">python</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address" class="add">Address:</label>
+
+                <textarea id="address" name="address" rows="4" cols="50" onkeyup="validateaddress()" class="addr"></textarea>
+                <div id="erroradd"></div>
+            </div>
+
+          <div class="form-group">
+            <label for="file" class="from-label">choose the image</label>
+            <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" maxlength="2000000"  required />
+          </div>
+           
+          <div class="form-group">
+            <label for="file" class="from-label">choose the file </label>
+            <input type="file" name="doc" id="doc" accept=".pdf" maxlength="5000000"  required/>
+        </div>
+            
+
+          <span class="btr"><input type="submit" name="submit"> <input type="reset"  name="Reset"></span>
+        </form>
+
+    </div>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
